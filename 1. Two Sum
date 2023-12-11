@@ -1,0 +1,27 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        int[] result_nums = new int[nums.length];
+        int first_number_position=0;
+        int second_number_position=0;
+
+        int first_number=0;
+        int second_number=0;
+
+        for(int position_1=0; position_1<nums.length-1; position_1++){
+
+            for(int position_2=position_1 + 1; position_2<nums.length; position_2++){
+
+                if(nums[position_1]+nums[position_2]==target){
+                    first_number=nums[position_1];
+                    second_number=nums[position_2];
+
+                    first_number_position = position_1;
+                    second_number_position = position_2;
+
+                }
+            }
+        }
+    return new int[]{first_number_position, second_number_position};
+    }
+}
