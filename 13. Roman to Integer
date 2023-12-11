@@ -1,0 +1,83 @@
+class Solution {
+    public int romanToInt(String s) {
+        // split the string into characters
+        char[] charArray = s.toCharArray();
+
+        int sum = 0;
+
+        for (int i = 0; i < charArray.length; i++) {
+            char currentChar = charArray[i];
+            int currentValue = 0;
+
+            switch (currentChar) {
+                case 'I':
+                    currentValue = 1;
+                    break;
+                case 'V':
+                    currentValue = 5;
+                    break;
+                case 'X':
+                    currentValue = 10;
+                    break;
+                case 'L':
+                    currentValue = 50;
+                    break;
+                case 'C':
+                    currentValue = 100;
+                    break;
+                case 'D':
+                    currentValue = 500;
+                    break;
+                case 'M':
+                    currentValue = 1000;
+                    break;
+                default:
+                    break;
+            }
+
+            // check if the next numeral is greater than the current
+            if (i < charArray.length - 1) {
+                char nextChar = charArray[i + 1];
+                int nextValue = 0;
+
+                switch (nextChar) {
+                    case 'I':
+                        nextValue = 1;
+                        break;
+                    case 'V':
+                        nextValue = 5;
+                        break;
+                    case 'X':
+                        nextValue = 10;
+                        break;
+                    case 'L':
+                        nextValue = 50;
+                        break;
+                    case 'C':
+                        nextValue = 100;
+                        break;
+                    case 'D':
+                        nextValue = 500;
+                        break;
+                    case 'M':
+                        nextValue = 1000;
+                        break;
+                    default:
+                        break;
+                }
+
+                // subtract the current value if the next number greater
+                if (nextValue > currentValue) {
+                    sum -= currentValue;
+                } else {
+                    sum += currentValue;
+                }
+            } else {
+                // add its value
+                sum += currentValue;
+            }
+        }
+
+        return sum;
+    }
+}
