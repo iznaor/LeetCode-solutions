@@ -1,0 +1,16 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int nonValElementCount = 0;  
+
+        for (int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
+            int currentElement = nums[currentIndex];
+
+            if (currentElement != val) {
+                nums[nonValElementCount] = currentElement;
+                nonValElementCount++;
+            }
+        }
+
+        return nonValElementCount;  
+    }
+}
