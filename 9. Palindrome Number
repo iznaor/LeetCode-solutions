@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Solution {
+    public boolean isPalindrome(int x) {
+        // number to string
+        String numberAsAString = String.valueOf(x);
+
+        // list that will later be filled
+        List<Integer> digitList = new ArrayList<>();
+
+        // split string into parts and store it into previously created list
+        for (char c : numberAsAString.toCharArray()) {
+            // Convert each character to its numeric value
+            digitList.add(Character.getNumericValue(c));
+        }
+
+        // two more lists to keep the halves for comparison
+        List<Integer> firstPart;
+        List<Integer> secondPart;
+
+        // if even digit number (for instance 2002)
+        if ((digitList.size() % 2) == 0) {
+            int splitIndex = digitList.size() / 2;
+
+            firstPart = new ArrayList<>(digitList.subList(0, splitIndex));
+            secondPart = new ArrayList<>(digitList.subList(splitIndex, digitList.size()));
+            Collections.reverse(secondPart);
+
+            return firstPart.equals(secondPart);
+        }
+
+        // if odd digit number (for instance 202)
+        if ((digitList.size() % 2) != 0) {
+            int splitIndex = digitList.size() / 2;
+
+            firstPart = new ArrayList<>(digitList.subList(0, splitIndex));
+            secondPart = new ArrayList<>(digitList.subList(splitIndex + 1, digitList.size()));
+            Collections.reverse(secondPart);
+
+            return firstPart.equals(secondPart);
+        }
+
+        // default 
+        return false;
+    }
+}
