@@ -1,0 +1,20 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        char[] charArrayneedle = needle.toCharArray();
+        char[] charArrayhaystack = haystack.toCharArray();
+
+        for (int out_txt_loop = 0; out_txt_loop <= charArrayhaystack.length - charArrayneedle.length; out_txt_loop++) {
+            int in_pattern_loop;
+            for (in_pattern_loop = 0; in_pattern_loop < charArrayneedle.length; in_pattern_loop++) {
+                if (charArrayhaystack[out_txt_loop + in_pattern_loop] != charArrayneedle[in_pattern_loop]) {
+                    break;
+                }
+            }
+            if (in_pattern_loop == charArrayneedle.length) {
+                return out_txt_loop; // return the starting index
+            }
+        }
+        return -1; // not found
+        
+    }
+}
